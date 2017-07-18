@@ -46,20 +46,19 @@ function padZero(number){
 
 var timestampOnStart = getTimestampInSecs()
 
-function displayTimer(){
+function getSecondsLeft(){
   var currentTimestamp = getTimestampInSecs()
   var secsGone = currentTimestamp - timestampOnStart
-  var secsLeft = Math.max(TIMEOUT_IN_SECS - secsGone, 0)
+  return Math.max(TIMEOUT_IN_SECS - secsGone, 0)
+}
 
+function displayTimer(){
+  var secsLeft = getSecondsLeft();
   var minutes = Math.floor(secsLeft / 60);
   var seconds = secsLeft - minutes * 60;
 
   document.getElementById('timer-minutes').innerHTML = padZero(minutes)
   document.getElementById('timer-seconds').innerHTML = padZero(seconds)
-
-  if(secsLeft == 0 && (TIMEOUT_IN_SECS - secsGone)%30==0){
-    alertQuotes();
-  }
 }
 
 function randomChoice(arr) {
@@ -70,4 +69,13 @@ function alertQuotes(){
   window.alert(randomChoice(INSPIRATIONAL_QUOTES));
 }
 
-setInterval(displayTimer, 300)
+function displayAlert(){
+  var secsLeft = getSecondsLeft();
+  if(secsLeft == 0){
+    alertQuotes();
+  }
+}
+
+
+setInterval(displayTimer, 300);
+setInterval(displayAlert, 30000);

@@ -22,7 +22,7 @@ var INSPIRATIONAL_QUOTES =  [
 
 // adds HTML tag to current page
 var timerContainer = document.createElement('div')
-timerContainer.setAttribute("style", "position: fixed; top: 24px; left: 16px; z-index: 1; width: 100px; background-color: #65a3be; border-radius: 5px;")
+timerContainer.setAttribute("style", "position: fixed; top: 24px; left: 16px; z-index: 150; width: 100px; background-color: #65a3be; border-radius: 5px;")
 var bodyTag = document.body
 bodyTag.insertBefore(timerContainer, bodyTag.firstChild)
 timerContainer.innerHTML = TEMPLATE
